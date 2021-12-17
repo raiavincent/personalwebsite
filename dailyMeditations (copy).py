@@ -2,8 +2,8 @@ import random
 import schedule
 import time
 
-
-def quoteWriter():
+text = 'meditations.txt' # Declaring meditations as our text here
+def randoPassage():
     with open(text,'r', encoding="utf-8") as myFile: # This will open the text as myFile, declares data as reading the text
         data = myFile.read()
 
@@ -12,4 +12,8 @@ def quoteWriter():
     with open('passage.txt', 'w') as f:
         f.write(passage)
 
-schedule.every().day.at("08:00").do(quoteWriter)
+schedule.every().friday.at('12:').do(randoPassage)
+
+while True:
+    schedule.run_pending()
+    time.sleep(1)
